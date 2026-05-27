@@ -3,49 +3,45 @@ from pulp import LpMinimize, LpProblem, LpContinuous, LpVariable, lpSum, value
 
 def hitting_set_aprox_lp(jugadores, pedidos):
     """
-    Aproximación para el Hitting Set Problem usando LP relajado
-    con redondeo determinístico.
+    Aproximacion por LP relajado y redondeo.
 
     Algoritmo:
-        1. Resolver el LP relajado (variables continuas en [0, 1]).
-        2. Calcular b = tamaño del pedido más grande.
-        3. Redondear: x_j = 1 si x_j* >= 1/b, sino 0.
+        1. resolvemos el LP relajado, o sea con cualquier valor entre [0, 1]
+        2. calculamos b como el tamanio del pedido mas grande
+        3. elegimos j si x_j >= 1/b
 
-    Esta es una b-aproximación: la solución tiene a lo sumo
-    b veces el tamaño de la solución óptima.
+    La cota de aproximacion es b.
 
-    Parámetros:
-        jugadores: set con todos los jugadores (A).
-        pedidos: lista de sets, donde cada set es un pedido (B_i).
+    Parametros:
+        jugadores: set con todos los jugadores, o sea A
+        pedidos: lista de sets, o sea los B_i
 
     Devuelve:
-        tupla (solucion, valor_b) donde:
-            solucion: set con los jugadores elegidos.
-            valor_b: el factor de aproximación.
+        (solucion, valor_b)
     """
     modelo = LpProblem("HittingSet_Relajado", LpMinimize)
 
-    # Variables continuas en [0, 1] (LP relajado)
+    # Variables continuas en [0, 1].
     variables = {}
     for jugador in jugadores:
         variables[jugador] = LpVariable(
             f"x_{jugador}", lowBound=0, upBound=1, cat=LpContinuous
         )
 
-    # Función objetivo: minimizar sum(x_j)
+    # Misma funcion objetivo que el modelo entero.
     modelo += lpSum(variables[j] for j in jugadores)
 
-    # Restricciones: cada pedido debe sumar al menos 1
+    # Cada pedido tiene que sumar al menos 1.
     for i, pedido in enumerate(pedidos):
         modelo += lpSum(variables[j] for j in pedido) >= 1, f"pedido_{i}"
 
-    # Resolver
+    # Resolvemos el LP relajado.
     modelo.solve(pulp_solver_sin_log())
 
-    # Calcular b = tamaño del pedido más grande
+    # b es el tamanio del pedido mas grande.
     valor_b = _calcular_b(pedidos)
 
-    # Redondear: si x_j* >= 1/b, entonces x_j = 1
+    # Si x_j >= 1/b, lo agregamos a la solucion.
     umbral = 1.0 / valor_b
     solucion = set()
     for jugador in jugadores:
@@ -58,13 +54,7 @@ def hitting_set_aprox_lp(jugadores, pedidos):
 
 def _calcular_b(pedidos):
     """
-    Calcula b como el tamaño del pedido más grande.
-
-    Parámetros:
-        pedidos: lista de sets con los pedidos.
-
-    Devuelve:
-        int con el tamaño del pedido más grande.
+    Calcula b como el tamanio del pedido mas grande.
     """
     b = 0
     for pedido in pedidos:
@@ -75,7 +65,8 @@ def _calcular_b(pedidos):
 
 def pulp_solver_sin_log():
     """
-    Devuelve un solver de PuLP configurado para no mostrar mensajes.
+    Devuelve el solver CBC de PuLP sin log.
     """
     from pulp import PULP_CBC_CMD
+
     return PULP_CBC_CMD(msg=0)

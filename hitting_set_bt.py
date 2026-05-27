@@ -1,17 +1,15 @@
 def hitting_set_backtracking(jugadores, pedidos):
     """
-    Resuelve el Hitting Set Problem de forma exacta usando backtracking.
+    Resuelve hitting set exacto con bt.
 
-    Dado un conjunto de jugadores (A) y una lista de pedidos (B_1, ..., B_m),
-    encuentra el subconjunto C de A de menor tamaño tal que C intersecte
-    a todos los pedidos.
+    Busca el C mas chico posible tal que toque todos los pedidos.
 
-    Parámetros:
-        jugadores: set con todos los jugadores (A).
-        pedidos: lista de sets, donde cada set es un pedido (B_i).
+    Parametros:
+        jugadores: set con todos los jugadores, o sea A
+        pedidos: lista de sets, o sea los B_i
 
     Devuelve:
-        set con los jugadores de la solución óptima (C).
+        set con la solucion optima C
     """
     mejor_solucion = set(jugadores)  # peor caso: todos los jugadores
     solucion_parcial = set()
@@ -23,40 +21,41 @@ def hitting_set_backtracking(jugadores, pedidos):
 
 def _backtrack(pedidos_restantes, solucion_parcial, mejor_solucion):
     """
-    Función recursiva del backtracking.
+    Paso recursivo del bt.
 
-    En cada llamada, busca un pedido no cubierto y ramifica eligiendo
-    cada jugador de ese pedido como candidato.
+    Agarra un pedido que falta cubrir y prueba elegir cada jugador de ese pedido.
 
-    Parámetros:
-        pedidos_restantes: lista de sets con los pedidos aún no cubiertos.
-        solucion_parcial: set con los jugadores elegidos hasta ahora.
-        mejor_solucion: set con la mejor solución encontrada hasta ahora.
+    Parametros:
+        pedidos_restantes: pedidos que todavia no estan cubiertos
+        solucion_parcial: jugadores elegidos hasta ahora
+        mejor_solucion: mejor solucion encontrada hasta ahora
 
     Devuelve:
-        set con la mejor solución encontrada.
+        la mejor solucion encontrada hasta este punto
     """
-    # Caso base: si no quedan pedidos, todos fueron cubiertos
+    # caso base: si no quedan pedidos, ya cubrimos todo
     if len(pedidos_restantes) == 0:
         if len(solucion_parcial) < len(mejor_solucion):
             mejor_solucion = set(solucion_parcial)
         return mejor_solucion
 
-    # Poda: si la solución parcial ya es tan grande como la mejor, cortamos
+    # caso base: si ya no podemos mejorar la mejor solucion, cortamos esta rama
     if len(solucion_parcial) >= len(mejor_solucion) - 1:
         return mejor_solucion
 
-    # MRV: elegimos el pedido no cubierto con menos jugadores
+    # Elegimos primero el pedido con menos opciones
     pedido_elegido = _pedido_mas_restrictivo(pedidos_restantes)
 
-    # Ramificamos: probamos con cada jugador del pedido elegido
+    # Probamos cada jugador posible para cubrir ese pedido
     for jugador in pedido_elegido:
         solucion_parcial.add(jugador)
 
-        # Propagación: filtramos los pedidos que este jugador cubre
+        # Sacamos los pedidos que ya quedan cubiertos por este jugador.
         pedidos_sin_cubrir = _filtrar_pedidos_cubiertos(pedidos_restantes, jugador)
 
-        mejor_solucion = _backtrack(pedidos_sin_cubrir, solucion_parcial, mejor_solucion)
+        mejor_solucion = _backtrack(
+            pedidos_sin_cubrir, solucion_parcial, mejor_solucion
+        )
 
         solucion_parcial.remove(jugador)
 
@@ -65,16 +64,12 @@ def _backtrack(pedidos_restantes, solucion_parcial, mejor_solucion):
 
 def _pedido_mas_restrictivo(pedidos):
     """
-    Devuelve el pedido con menor cantidad de jugadores (heurística MRV).
+    Devuelve el pedido con menos jugadores.
 
-    Al elegir el pedido más restrictivo primero, se generan menos ramas
-    en el árbol de backtracking.
-
-    Parámetros:
-        pedidos: lista de sets con los pedidos restantes.
+    La idea es ramificar primero por el pedido que tiene menos opciones.
 
     Devuelve:
-        set con el pedido que tiene menos jugadores.
+        set con el pedido mas chico
     """
     pedido_minimo = pedidos[0]
 
@@ -87,17 +82,12 @@ def _pedido_mas_restrictivo(pedidos):
 
 def _filtrar_pedidos_cubiertos(pedidos, jugador):
     """
-    Devuelve los pedidos que el jugador elegido NO cubre.
+    Devuelve los pedidos que el jugador elegido no cubre.
 
-    Un pedido queda cubierto si el jugador pertenece a él,
-    por lo que no necesita ser procesado en la recursión.
-
-    Parámetros:
-        pedidos: lista de sets con los pedidos actuales.
-        jugador: string con el nombre del jugador elegido.
+    Si el jugador esta en un pedido, ese pedido ya no hace falta seguirlo.
 
     Devuelve:
-        lista de sets con los pedidos que aún no están cubiertos.
+        lista de pedidos que siguen sin cubrir
     """
     pedidos_sin_cubrir = []
 

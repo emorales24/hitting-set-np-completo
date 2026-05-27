@@ -13,7 +13,7 @@ def main():
 
     solucion = hitting_set_backtracking(jugadores, pedidos)
 
-    print(f"Cantidad mínima: {len(solucion)}")
+    print(f"Cantidad minima: {len(solucion)}")
     print(f"Jugadores: {', '.join(sorted(solucion))}")
 
 

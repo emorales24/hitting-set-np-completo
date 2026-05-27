@@ -7,22 +7,22 @@ from hitting_set_bt import hitting_set_backtracking
 from validador_polinomial import validar_cobertura
 from generador_datos import generar_sets_completos
 
-
 REPETICIONES = 3
 TIMEOUT_SEGUNDOS = 120
 
 
 def medir_tiempo(jugadores, pedidos):
     """
-    Mide el tiempo de ejecución del backtracking.
-    Ejecuta varias veces y devuelve el promedio.
+    Mide cuanto tarda el bt.
+    Lo corre varias veces y devuelve el promedio.
 
-    Parámetros:
-        jugadores: set con todos los jugadores.
-        pedidos: lista de sets con los pedidos.
+    Parametros:
+        jugadores: set con todos los jugadores
+        pedidos: lista de sets con los pedidos
 
     Devuelve:
-        tupla (solucion, tiempo_promedio, tiempos) o (None, None, None) si excede el timeout.
+        (solucion, tiempo_promedio, tiempos)
+        o (None, None, None) si tarda mas que el timeout
     """
     tiempos = []
     solucion = None
@@ -36,7 +36,7 @@ def medir_tiempo(jugadores, pedidos):
         tiempos.append(duracion)
         solucion = resultado
 
-        # Si una sola ejecución supera el timeout, no repetimos
+        # Si una ejecucion se pasa del timeout, no se repite
         if duracion > TIMEOUT_SEGUNDOS:
             return None, None, None
 
@@ -46,25 +46,41 @@ def medir_tiempo(jugadores, pedidos):
 
 def medir_archivos_catedra():
     """
-    Ejecuta mediciones sobre los archivos de la cátedra.
-    Devuelve una lista de diccionarios con los resultados.
+    Corre mediciones sobre los archivos de la catedra.
     """
     directorio = "archivos-test-catedra"
     archivos = [
-        "5.txt", "7.txt", "10_pocos.txt", "10_varios.txt", "10_todos.txt",
-        "15.txt", "20.txt", "50.txt", "75.txt", "100.txt", "200.txt"
+        "5.txt",
+        "7.txt",
+        "10_pocos.txt",
+        "10_varios.txt",
+        "10_todos.txt",
+        "15.txt",
+        "20.txt",
+        "50.txt",
+        "75.txt",
+        "100.txt",
+        "200.txt",
     ]
 
     resultados_esperados = {
-        "5.txt": 2, "7.txt": 2, "10_pocos.txt": 3, "10_varios.txt": 6,
-        "10_todos.txt": 10, "15.txt": 4, "20.txt": 5, "50.txt": 6,
-        "75.txt": 8, "100.txt": 9, "200.txt": 9
+        "5.txt": 2,
+        "7.txt": 2,
+        "10_pocos.txt": 3,
+        "10_varios.txt": 6,
+        "10_todos.txt": 10,
+        "15.txt": 4,
+        "20.txt": 5,
+        "50.txt": 6,
+        "75.txt": 8,
+        "100.txt": 9,
+        "200.txt": 9,
     }
 
     resultados = []
 
     print("=" * 70)
-    print("MEDICIONES - ARCHIVOS DE LA CÁTEDRA")
+    print("MEDICIONES - ARCHIVOS DE LA CATEDRA")
     print("=" * 70)
 
     for archivo in archivos:
@@ -83,29 +99,32 @@ def medir_archivos_catedra():
 
         estado = "OK" if (es_valida and cantidad_ok) else "FALLO"
 
-        print(f"{archivo:20s} | n={len(jugadores):4d} | m={len(pedidos):4d} | "
-              f"|C|={len(solucion):3d} (esperado {esperado}) | "
-              f"t={tiempo_prom:.6f}s | {estado}")
+        print(
+            f"{archivo:20s} | n={len(jugadores):4d} | m={len(pedidos):4d} | "
+            f"|C|={len(solucion):3d} (esperado {esperado}) | "
+            f"t={tiempo_prom:.6f}s | {estado}"
+        )
 
-        resultados.append({
-            "archivo": archivo,
-            "tipo": "catedra",
-            "n": len(jugadores),
-            "m": len(pedidos),
-            "solucion_tam": len(solucion),
-            "esperado": esperado,
-            "tiempo_promedio": tiempo_prom,
-            "valida": es_valida,
-            "correcta": cantidad_ok
-        })
+        resultados.append(
+            {
+                "archivo": archivo,
+                "tipo": "catedra",
+                "n": len(jugadores),
+                "m": len(pedidos),
+                "solucion_tam": len(solucion),
+                "esperado": esperado,
+                "tiempo_promedio": tiempo_prom,
+                "valida": es_valida,
+                "correcta": cantidad_ok,
+            }
+        )
 
     return resultados
 
 
 def medir_archivos_propios():
     """
-    Genera los sets propios y ejecuta mediciones sobre ellos.
-    Devuelve una lista de diccionarios con los resultados.
+    Genera los sets propios y los mide.
     """
     directorio = "archivos-test-propios"
     sets_info = generar_sets_completos(directorio)
@@ -124,41 +143,49 @@ def medir_archivos_propios():
         solucion, tiempo_prom, tiempos = medir_tiempo(jugadores, pedidos)
 
         if solucion is None:
-            print(f"{nombre:25s} | n={n:4d} | m={m:4d} | TIMEOUT (>{TIMEOUT_SEGUNDOS}s)")
-            resultados.append({
-                "archivo": nombre,
-                "tipo": tipo,
-                "n": n,
-                "m": m,
-                "solucion_tam": None,
-                "tiempo_promedio": None,
-                "valida": None,
-            })
+            print(
+                f"{nombre:25s} | n={n:4d} | m={m:4d} | TIMEOUT (>{TIMEOUT_SEGUNDOS}s)"
+            )
+            resultados.append(
+                {
+                    "archivo": nombre,
+                    "tipo": tipo,
+                    "n": n,
+                    "m": m,
+                    "solucion_tam": None,
+                    "tiempo_promedio": None,
+                    "valida": None,
+                }
+            )
             continue
 
         es_valida = validar_cobertura(solucion, jugadores, pedidos)
 
-        print(f"{nombre:25s} | n={n:4d} | m={m:4d} | "
-              f"|C|={len(solucion):3d} | "
-              f"t={tiempo_prom:.6f}s | "
-              f"valida={es_valida} | tipo={tipo}")
+        print(
+            f"{nombre:25s} | n={n:4d} | m={m:4d} | "
+            f"|C|={len(solucion):3d} | "
+            f"t={tiempo_prom:.6f}s | "
+            f"valida={es_valida} | tipo={tipo}"
+        )
 
-        resultados.append({
-            "archivo": nombre,
-            "tipo": tipo,
-            "n": n,
-            "m": m,
-            "solucion_tam": len(solucion),
-            "tiempo_promedio": tiempo_prom,
-            "valida": es_valida,
-        })
+        resultados.append(
+            {
+                "archivo": nombre,
+                "tipo": tipo,
+                "n": n,
+                "m": m,
+                "solucion_tam": len(solucion),
+                "tiempo_promedio": tiempo_prom,
+                "valida": es_valida,
+            }
+        )
 
     return resultados
 
 
 def guardar_resultados_csv(resultados, ruta_csv):
     """
-    Guarda los resultados de las mediciones en un archivo CSV.
+    Guarda las mediciones en un csv.
     """
     if not resultados:
         return
@@ -193,10 +220,13 @@ def main():
     timeouts = sum(1 for r in todos_los_resultados if r.get("tiempo_promedio") is None)
 
     print(f"Total de instancias: {total}")
-    print(f"Soluciones válidas:  {validos}")
+    print(f"Soluciones validas:  {validos}")
     print(f"Timeouts:            {timeouts}")
 
-    guardar_resultados_csv(todos_los_resultados, "resultados_mediciones_bt.csv")
+    os.makedirs("resultados-propios", exist_ok=True)
+    guardar_resultados_csv(
+        todos_los_resultados, "resultados-propios/resultados_mediciones_bt.csv"
+    )
 
 
 if __name__ == "__main__":

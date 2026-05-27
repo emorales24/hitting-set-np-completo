@@ -1,24 +1,20 @@
 def hitting_set_greedy(jugadores, pedidos):
     """
-    Heurística greedy para el Hitting Set Problem.
+    Logica greedy para hitting set.
 
-    Estrategia: en cada paso, elegir el jugador que cubre
-    la mayor cantidad de pedidos aún no cubiertos.
-    Repetir hasta que todos los pedidos estén cubiertos.
+    En cada paso elegimos el jugador que cubre mas pedidos que todavia
+    no estaban cubiertos.
 
-    Esta es una O(log m)-aproximación, análoga a la
-    aproximación greedy clásica de Set Cover.
+    Complejidad:
+        O(n*m) por iteracion y a lo sumo n iteraciones.
+        En peor caso queda O(n^2*m).
 
-    Complejidad: O(n * m) por iteración, y a lo sumo n iteraciones,
-    dando O(n^2 * m) en el peor caso. En la práctica es mucho menor
-    porque la cantidad de iteraciones es |C| (tamaño de la solución).
-
-    Parámetros:
-        jugadores: set con todos los jugadores (A).
-        pedidos: lista de sets, donde cada set es un pedido (B_i).
+    Parametros:
+        jugadores: set con todos los jugadores, o sea A
+        pedidos: lista de sets, o sea los B_i
 
     Devuelve:
-        set con los jugadores elegidos.
+        set con los jugadores elegidos
     """
     solucion = set()
     pedidos_restantes = list(pedidos)
@@ -27,7 +23,7 @@ def hitting_set_greedy(jugadores, pedidos):
         mejor_jugador = _jugador_que_mas_cubre(jugadores, pedidos_restantes)
         solucion.add(mejor_jugador)
 
-        # Filtrar los pedidos que este jugador cubre
+        # Sacamos los pedidos que ya cubre este jugador.
         pedidos_sin_cubrir = []
         for pedido in pedidos_restantes:
             if mejor_jugador not in pedido:
@@ -39,15 +35,10 @@ def hitting_set_greedy(jugadores, pedidos):
 
 def _jugador_que_mas_cubre(jugadores, pedidos_restantes):
     """
-    Encuentra el jugador que aparece en la mayor cantidad
-    de pedidos restantes (regla greedy).
-
-    Parámetros:
-        jugadores: set con todos los jugadores.
-        pedidos_restantes: lista de sets con los pedidos aún no cubiertos.
+    Busca el jugador que aparece en mas pedidos restantes.
 
     Devuelve:
-        string con el nombre del jugador que más pedidos cubre.
+        el nombre del jugador que mas cubre
     """
     mejor_jugador = None
     mejor_cantidad = -1

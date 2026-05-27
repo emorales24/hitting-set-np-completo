@@ -1,17 +1,14 @@
-from pathlib import Path
-
-
 def cargar_pedidos_de_ruta(ruta):
     """
-    Lee una instancia del problema desde un archivo de texto.
+    Lee una instancia desde un txt.
 
     Formato:
-    - Cada linea es un pedido de la prensa (ie. un subconjunto B_i).
-    - En cada linea, los jugadores estan separados por coma.
+    - cada linea es un pedido de la prensa, o sea un B_i
+    - en cada linea los jugadores vienen separados por coma
 
     Devuelve:
-    - set de jugadores (ie. el conjunto A).
-    - los pedidos en una lista de sets (ie. los B_1, B_2, ..., B_m).
+    - jugadores: set con todos los jugadores, o sea A
+    - pedidos: lista de sets, o sea B_1, B_2, ..., B_m
     """
 
     pedidos = []
