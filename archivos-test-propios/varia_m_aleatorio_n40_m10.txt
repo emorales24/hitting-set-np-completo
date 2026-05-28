@@ -1,0 +1,10 @@
+Di Maria, Molina
+Almada, Simeone, Zeballos
+Almada, Barco, Buonanotte, Castellanos, Colidio, Echeverri, Enzo Fernandez, Fernandez, Nico Paz, Paredes
+Buonanotte, Colidio, Enzo Fernandez, Exequiel Palacios, Guido Rodriguez, Lautaro, Mac Allister, Paredes
+Beltran, Cuti Romero, De Paul, Echeverri, Enzo Fernandez, Licha Martinez, Mac Allister, Molina, Soule, Zeballos
+Dibu, Nico Gonzalez, Paredes, Pezzella, Senesi
+Ascacibar, Garnacho, Licha Martinez
+Alvarez, Buonanotte, Carboni, Cuti Romero, Exequiel Palacios, Garnacho, Licha Martinez, Paredes, Pezzella, Tagliafico
+Ascacibar, Buonanotte, Carboni, Dybala, Enzo Fernandez, Langoni, Lautaro, Pezzella, Senesi
+Ascacibar, Buonanotte, Colidio, De Paul, Licha Martinez, Mac Allister, Palacios, Simeone, Soule

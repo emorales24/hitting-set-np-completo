@@ -1,0 +1,60 @@
+Cuti Romero, Enzo Fernandez, Messi, Nico Gonzalez, Otamendi
+Cuti Romero, Messi, Nico Gonzalez
+Almada, Beltran, De Paul, Messi, Paredes
+Beltran, Cuti Romero, Enzo Fernandez, Mac Allister, Messi, Molina, Otamendi
+Alvarez, Di Maria, Dibu, Mac Allister, Messi, Simeone
+Beltran, Cuti Romero, De Paul, Di Maria, Enzo Fernandez, Guido Rodriguez, Messi, Soule
+Almada, Beltran, Exequiel Palacios, Garnacho, Licha Martinez, Messi, Otamendi, Pezzella
+Dybala, Nico Gonzalez
+Almada, Mac Allister, Messi, Tagliafico
+Almada, Enzo Fernandez, Lautaro, Messi, Molina, Paredes, Soule
+Cuti Romero, Dibu, Lautaro, Licha Martinez, Messi, Pezzella
+Exequiel Palacios, Messi, Pezzella
+Almada, Alvarez, Beltran, Di Maria, Messi, Paredes, Soule
+De Paul, Dibu, Lautaro, Messi
+Almada, Dybala, Exequiel Palacios, Gonzalo Montiel, Messi, Otamendi, Simeone
+Almada, Garnacho, Licha Martinez, Messi, Tagliafico
+Mac Allister, Messi
+Alvarez, De Paul, Exequiel Palacios, Messi, Nico Gonzalez
+Cuti Romero, Messi, Simeone
+Alvarez, Cuti Romero, Exequiel Palacios, Garnacho, Messi, Simeone
+Almada, Beltran, Exequiel Palacios, Gonzalo Montiel, Lautaro, Messi, Otamendi, Simeone
+Almada, Cuti Romero, Di Maria, Enzo Fernandez, Guido Rodriguez, Messi
+Gonzalo Montiel, Guido Rodriguez, Lautaro, Molina
+Dibu, Enzo Fernandez, Garnacho, Guido Rodriguez, Messi, Simeone
+Almada, Dibu, Garnacho, Gonzalo Montiel, Guido Rodriguez, Messi, Simeone, Tagliafico
+Cuti Romero, Dibu, Exequiel Palacios
+Almada, Di Maria, Gonzalo Montiel, Lautaro, Licha Martinez, Messi, Paredes
+Beltran, Dibu, Garnacho, Gonzalo Montiel, Guido Rodriguez, Lautaro, Messi, Soule
+Cuti Romero, Dibu, Dybala, Lautaro, Mac Allister, Messi, Otamendi, Pezzella, Simeone
+Di Maria, Enzo Fernandez, Messi
+Beltran, Cuti Romero, De Paul, Enzo Fernandez, Exequiel Palacios, Guido Rodriguez, Simeone
+Almada, Cuti Romero, Garnacho, Mac Allister, Messi, Tagliafico
+Almada, Garnacho, Guido Rodriguez, Mac Allister, Otamendi, Paredes, Pezzella
+Guido Rodriguez, Lautaro, Messi, Otamendi, Soule, Tagliafico
+De Paul, Messi, Pezzella
+Di Maria, Dibu, Enzo Fernandez, Exequiel Palacios, Messi, Pezzella
+Enzo Fernandez, Garnacho, Licha Martinez, Messi, Otamendi, Simeone, Soule
+Messi, Nico Gonzalez, Paredes, Pezzella
+Alvarez, Garnacho, Messi
+Cuti Romero, De Paul, Gonzalo Montiel, Guido Rodriguez, Licha Martinez, Soule
+Di Maria, Licha Martinez, Mac Allister, Messi, Molina
+Almada, Alvarez, Enzo Fernandez, Lautaro, Licha Martinez, Mac Allister, Molina, Nico Gonzalez
+Almada, De Paul, Dibu, Dybala, Messi, Tagliafico
+Almada, Dybala, Gonzalo Montiel, Licha Martinez, Mac Allister, Messi, Nico Gonzalez, Soule
+Alvarez, Dibu, Guido Rodriguez, Messi, Molina, Paredes, Pezzella, Soule
+Almada, Exequiel Palacios, Licha Martinez, Messi, Pezzella, Soule
+Almada, Alvarez, De Paul, Enzo Fernandez, Exequiel Palacios, Paredes
+Alvarez, Beltran, De Paul, Enzo Fernandez, Garnacho, Lautaro, Messi, Otamendi, Paredes
+Almada, Beltran, Exequiel Palacios, Gonzalo Montiel, Lautaro, Licha Martinez, Mac Allister, Messi, Simeone
+De Paul, Messi, Otamendi
+Messi, Otamendi, Paredes
+Alvarez, Messi, Pezzella
+Cuti Romero, Dibu, Messi, Simeone
+Enzo Fernandez, Exequiel Palacios, Gonzalo Montiel, Messi, Soule, Tagliafico
+Dibu, Dybala, Exequiel Palacios, Licha Martinez, Messi, Nico Gonzalez, Otamendi
+Alvarez, Beltran, De Paul, Enzo Fernandez, Exequiel Palacios, Gonzalo Montiel, Nico Gonzalez, Pezzella
+Di Maria, Dybala, Messi, Molina, Simeone
+Mac Allister, Messi, Paredes, Tagliafico
+Gonzalo Montiel, Mac Allister, Messi, Nico Gonzalez, Otamendi, Pezzella, Soule
+Cuti Romero, De Paul, Messi, Otamendi, Pezzella

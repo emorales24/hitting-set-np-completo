@@ -1,0 +1,40 @@
+Cuti Romero, Dibu, Gonzalo Montiel, Lautaro, Mac Allister, Messi
+Alvarez, Messi, Molina, Paredes
+Enzo Fernandez, Mac Allister, Messi
+Alvarez, Gonzalo Montiel, Messi, Molina, Nico Gonzalez, Tagliafico
+Dybala, Gonzalo Montiel, Messi
+Di Maria, Messi, Nico Gonzalez, Pezzella
+Di Maria, Enzo Fernandez, Exequiel Palacios, Gonzalo Montiel, Mac Allister, Messi, Tagliafico
+Guido Rodriguez, Mac Allister, Messi
+De Paul, Dibu, Gonzalo Montiel, Messi
+Dibu, Enzo Fernandez, Licha Martinez, Mac Allister, Messi, Molina, Otamendi
+Cuti Romero, De Paul, Enzo Fernandez, Messi
+Alvarez, Di Maria, Enzo Fernandez, Messi, Nico Gonzalez, Otamendi
+Guido Rodriguez, Messi, Paredes, Pezzella, Tagliafico
+Enzo Fernandez, Licha Martinez, Messi
+De Paul, Dibu, Exequiel Palacios, Gonzalo Montiel, Messi, Pezzella
+Cuti Romero, Lautaro, Licha Martinez, Nico Gonzalez, Otamendi
+Enzo Fernandez, Mac Allister, Messi
+Cuti Romero, Di Maria, Exequiel Palacios, Lautaro, Messi, Paredes
+Cuti Romero, De Paul, Dibu
+Dibu, Enzo Fernandez, Exequiel Palacios, Nico Gonzalez, Otamendi, Pezzella
+Guido Rodriguez, Messi, Pezzella
+Cuti Romero, De Paul, Enzo Fernandez, Exequiel Palacios, Gonzalo Montiel, Messi, Paredes
+Licha Martinez, Mac Allister, Messi, Molina, Nico Gonzalez
+De Paul, Di Maria, Enzo Fernandez, Pezzella, Tagliafico
+Dybala, Exequiel Palacios, Gonzalo Montiel, Messi
+Dybala, Enzo Fernandez, Guido Rodriguez, Mac Allister, Messi, Nico Gonzalez, Pezzella
+Dybala, Mac Allister, Messi, Paredes
+Dybala, Exequiel Palacios, Gonzalo Montiel, Mac Allister, Messi
+Cuti Romero, Di Maria, Dibu, Messi, Molina, Otamendi
+Mac Allister, Messi, Pezzella
+Cuti Romero, Enzo Fernandez, Messi, Paredes
+Alvarez, Licha Martinez, Messi, Pezzella
+Di Maria, Dibu, Gonzalo Montiel, Messi
+Cuti Romero, Messi
+Dibu, Dybala
+Gonzalo Montiel, Lautaro, Nico Gonzalez, Paredes, Pezzella
+Alvarez, Di Maria, Exequiel Palacios, Licha Martinez, Molina, Otamendi
+Dibu, Gonzalo Montiel, Licha Martinez, Messi, Otamendi, Pezzella
+Dibu, Dybala, Messi, Nico Gonzalez, Otamendi
+Di Maria, Otamendi, Paredes, Tagliafico

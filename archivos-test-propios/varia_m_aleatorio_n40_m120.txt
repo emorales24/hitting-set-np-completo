@@ -1,0 +1,120 @@
+Almada, Carboni, Dybala, Enzo Fernandez, Exequiel Palacios, Langoni, Nico Paz, Romero, Simeone, Tagliafico
+Almada, Cuti Romero, Di Maria, Fernandez, Messi, Nico Paz, Palacios, Pezzella, Zeballos
+Gonzalo Montiel, Nico Paz, Paredes, Zeballos
+Barco, De Paul, Di Maria, Lautaro, Licha Martinez, Messi, Nico Gonzalez, Pezzella
+Carboni, Cuti Romero, Dibu, Garnacho, Molina
+Ascacibar, Barco, Carboni, Castellanos, Di Maria, Dybala, Molina, Paredes, Soule
+De Paul, Dybala, Medina, Nico Paz, Otamendi
+Almada, Ascacibar, Dibu, Exequiel Palacios, Guido Rodriguez, Langoni, Lautaro, Palacios, Paredes
+Beltran, Colidio, Lautaro, Tagliafico
+Ascacibar, Buonanotte, Gonzalo Montiel, Simeone
+Alvarez, Enzo Fernandez, Exequiel Palacios, Guido Rodriguez, Otamendi, Senesi, Tagliafico
+Alvarez, Carboni, Colidio, De Paul, Echeverri, Exequiel Palacios, Fernandez, Langoni, Otamendi, Senesi
+Dybala, Lautaro
+Colidio, Guido Rodriguez, Medina, Nico Paz, Otamendi, Palacios, Paredes, Zeballos
+Barco, Castellanos, Di Maria, Dybala, Echeverri, Guido Rodriguez, Lautaro, Licha Martinez, Nico Gonzalez, Nico Paz
+Exequiel Palacios, Pezzella, Soule, Tagliafico, Zeballos
+Di Maria, Senesi, Soule, Zeballos
+Dibu, Nico Gonzalez, Zeballos
+Buonanotte, Cuti Romero, Dybala, Lautaro, Nico Gonzalez, Otamendi, Paredes
+Buonanotte, Castellanos, Enzo Fernandez
+Di Maria, Messi, Nico Gonzalez, Tagliafico
+Almada, Beltran, Carboni, Colidio, Echeverri, Guido Rodriguez, Molina, Pezzella
+Alvarez, Ascacibar, Dybala, Enzo Fernandez, Guido Rodriguez, Lautaro, Medina
+De Paul, Dibu, Enzo Fernandez, Mac Allister, Nico Paz
+Buonanotte, Carboni, Castellanos, Cuti Romero, Gonzalo Montiel, Licha Martinez, Medina, Senesi, Soule, Zeballos
+Alvarez, Carboni, Dibu, Echeverri, Lautaro, Messi, Molina, Senesi, Simeone, Soule
+Barco, Cuti Romero, Enzo Fernandez, Medina, Molina, Paredes
+Beltran, Colidio, De Paul, Enzo Fernandez, Molina
+Almada, Enzo Fernandez, Licha Martinez, Messi, Otamendi
+Ascacibar, Barco, Carboni, De Paul, Enzo Fernandez, Messi, Nico Paz, Romero, Simeone, Zeballos
+Echeverri, Molina, Nico Gonzalez, Otamendi, Tagliafico, Zeballos
+Carboni, Echeverri, Fernandez, Gonzalo Montiel, Lautaro, Medina, Pezzella
+Buonanotte, Echeverri, Exequiel Palacios, Nico Gonzalez, Soule
+Barco, De Paul, Dybala, Guido Rodriguez, Medina, Romero
+Beltran, Carboni, Castellanos, Colidio, Di Maria, Garnacho, Gonzalo Montiel, Messi, Paredes, Pezzella
+Ascacibar, Beltran, Colidio, Nico Paz
+Almada, Alvarez, Colidio, Fernandez, Mac Allister, Paredes
+Dibu, Enzo Fernandez, Exequiel Palacios, Langoni, Nico Gonzalez
+Barco, Buonanotte, Di Maria, Dibu, Fernandez, Mac Allister, Molina, Romero, Tagliafico, Zeballos
+Garnacho, Soule
+Ascacibar, Buonanotte, Senesi, Simeone
+Ascacibar, Colidio, Dibu, Echeverri, Enzo Fernandez, Guido Rodriguez, Langoni, Lautaro, Pezzella
+Alvarez, Ascacibar, Beltran, Cuti Romero, Garnacho, Medina, Paredes, Romero, Simeone
+Barco, Colidio, De Paul, Di Maria, Enzo Fernandez, Lautaro, Nico Paz, Romero
+Almada, Castellanos, Colidio, Di Maria, Mac Allister
+Alvarez, Beltran, Guido Rodriguez, Molina
+Beltran, Castellanos, Enzo Fernandez, Fernandez, Mac Allister, Paredes, Pezzella, Soule
+Dibu, Exequiel Palacios, Lautaro, Mac Allister, Otamendi, Paredes, Senesi
+Ascacibar, Carboni, Dibu, Dybala, Echeverri, Enzo Fernandez, Medina, Nico Gonzalez, Nico Paz, Tagliafico
+Almada, Molina
+De Paul, Dybala, Gonzalo Montiel, Nico Paz
+Ascacibar, Castellanos, Colidio, Enzo Fernandez, Fernandez, Palacios, Tagliafico
+Ascacibar, Cuti Romero, Gonzalo Montiel
+Carboni, Messi, Palacios
+Almada, Buonanotte, Cuti Romero, Dibu, Exequiel Palacios, Guido Rodriguez, Mac Allister, Molina, Paredes
+Barco, Enzo Fernandez
+Barco, Buonanotte, Dibu, Enzo Fernandez, Fernandez, Palacios, Paredes, Pezzella, Soule
+Carboni, Senesi, Tagliafico
+Almada, Garnacho, Paredes
+Ascacibar, Mac Allister, Palacios
+Castellanos, Garnacho, Guido Rodriguez, Mac Allister, Paredes, Pezzella
+Almada, Castellanos, Colidio, Cuti Romero, De Paul, Dibu, Dybala, Guido Rodriguez, Molina, Nico Paz
+Almada, Beltran, Castellanos, Cuti Romero, Dybala, Fernandez, Gonzalo Montiel, Otamendi
+Almada, Ascacibar, Buonanotte, Colidio, Enzo Fernandez, Exequiel Palacios, Lautaro, Medina, Senesi
+Almada, Ascacibar
+Buonanotte, Carboni, Dybala, Echeverri, Exequiel Palacios, Garnacho, Molina, Romero
+Almada, Echeverri, Fernandez, Lautaro, Molina, Nico Paz, Senesi, Simeone, Tagliafico, Zeballos
+Carboni, Dibu, Enzo Fernandez, Lautaro, Messi, Otamendi, Simeone
+De Paul, Echeverri, Fernandez, Guido Rodriguez, Langoni, Pezzella, Romero, Senesi, Soule
+Dibu, Exequiel Palacios, Nico Gonzalez
+Barco, Cuti Romero, Gonzalo Montiel, Licha Martinez, Medina, Messi, Molina, Senesi
+Barco, De Paul, Enzo Fernandez, Exequiel Palacios, Fernandez, Langoni, Licha Martinez, Nico Paz, Pezzella
+Barco, Dybala, Enzo Fernandez, Fernandez, Gonzalo Montiel, Mac Allister, Palacios
+Ascacibar, Barco, Dybala, Echeverri, Exequiel Palacios, Medina, Messi, Tagliafico, Zeballos
+Enzo Fernandez, Senesi
+Barco, Carboni, Castellanos, Dibu, Mac Allister, Nico Paz, Senesi
+Almada, Barco, Buonanotte, Carboni, Di Maria, Guido Rodriguez, Langoni, Messi, Soule
+Alvarez, Beltran, Colidio, Nico Gonzalez, Romero, Senesi, Zeballos
+Castellanos, De Paul, Dybala, Garnacho, Medina, Senesi, Tagliafico
+Soule, Tagliafico, Zeballos
+Exequiel Palacios, Garnacho, Licha Martinez, Senesi
+Almada, Beltran, Buonanotte, Colidio, Enzo Fernandez, Exequiel Palacios, Nico Gonzalez, Nico Paz, Soule
+De Paul, Simeone
+Ascacibar, Barco, Paredes, Tagliafico
+Dybala, Messi, Otamendi, Zeballos
+Ascacibar, Carboni, Echeverri, Garnacho, Gonzalo Montiel, Otamendi, Paredes, Soule, Zeballos
+Alvarez, De Paul, Messi
+Echeverri, Exequiel Palacios, Zeballos
+Ascacibar, Beltran, Castellanos, Cuti Romero, Gonzalo Montiel, Nico Gonzalez, Palacios, Romero, Tagliafico
+Buonanotte, Carboni, De Paul, Dibu, Exequiel Palacios, Fernandez, Molina
+Ascacibar, Colidio, Cuti Romero, Guido Rodriguez, Lautaro, Senesi
+De Paul, Gonzalo Montiel, Lautaro, Mac Allister, Messi, Molina, Nico Gonzalez, Palacios, Romero, Senesi
+Beltran, De Paul, Lautaro
+Alvarez, Colidio, Echeverri, Langoni, Messi, Nico Gonzalez, Palacios, Paredes, Pezzella, Senesi
+Alvarez, Ascacibar, Buonanotte, Enzo Fernandez, Lautaro, Mac Allister, Nico Paz
+Carboni, Enzo Fernandez, Fernandez, Garnacho, Guido Rodriguez, Mac Allister
+Alvarez, Buonanotte, De Paul, Nico Paz, Palacios, Paredes
+Beltran, Lautaro, Mac Allister, Paredes
+Ascacibar, Buonanotte, Gonzalo Montiel, Licha Martinez, Mac Allister, Nico Paz, Palacios, Senesi
+De Paul, Di Maria, Licha Martinez, Mac Allister, Molina, Nico Gonzalez, Senesi, Simeone
+Beltran, Colidio, Cuti Romero, Guido Rodriguez, Licha Martinez, Nico Gonzalez
+Alvarez, Colidio, Dybala, Garnacho, Lautaro, Mac Allister, Medina
+Gonzalo Montiel, Otamendi, Soule
+Ascacibar, Castellanos, Di Maria, Enzo Fernandez, Gonzalo Montiel, Pezzella, Zeballos
+Carboni, Colidio, Di Maria, Medina, Zeballos
+Almada, Carboni, Cuti Romero, De Paul, Echeverri, Guido Rodriguez, Molina, Palacios, Romero, Soule
+Ascacibar, Castellanos, Exequiel Palacios, Guido Rodriguez, Langoni, Licha Martinez, Medina, Molina, Tagliafico
+Messi, Nico Paz, Tagliafico
+Beltran, Carboni, Echeverri, Fernandez, Licha Martinez, Mac Allister, Nico Gonzalez, Nico Paz, Paredes
+Di Maria, Dybala, Langoni, Nico Paz, Soule
+Almada, Cuti Romero, Exequiel Palacios
+Alvarez, Ascacibar, Barco, Castellanos, Medina, Soule
+Almada, Buonanotte, Palacios
+Ascacibar, Carboni, Fernandez, Mac Allister, Nico Paz, Palacios, Paredes, Soule, Zeballos
+Ascacibar, Castellanos, Cuti Romero, De Paul, Langoni, Mac Allister, Nico Gonzalez, Nico Paz, Paredes
+Barco, Carboni, De Paul, Di Maria, Fernandez, Garnacho, Guido Rodriguez, Simeone, Tagliafico, Zeballos
+Ascacibar, Dybala, Enzo Fernandez, Exequiel Palacios, Guido Rodriguez, Mac Allister, Nico Paz, Zeballos
+Dibu, Fernandez, Lautaro, Otamendi, Senesi
+Alvarez, Licha Martinez, Mac Allister, Nico Gonzalez, Nico Paz, Paredes, Zeballos
+Echeverri, Lautaro, Licha Martinez, Mac Allister, Nico Paz, Paredes, Pezzella, Tagliafico

@@ -1,0 +1,40 @@
+Dybala, Enzo Fernandez
+Guido Rodriguez, Messi
+Messi, Otamendi
+Cuti Romero, Gonzalo Montiel, Messi
+De Paul, Di Maria, Tagliafico
+Alvarez, Enzo Fernandez, Otamendi
+Alvarez, De Paul
+Guido Rodriguez, Pezzella
+Cuti Romero, Mac Allister
+Cuti Romero, Pezzella
+Cuti Romero, Dibu, Exequiel Palacios
+Alvarez, Cuti Romero, Tagliafico
+Guido Rodriguez, Mac Allister
+Cuti Romero, Dybala
+Mac Allister, Messi
+Mac Allister, Nico Gonzalez
+Guido Rodriguez, Licha Martinez
+Dibu, Messi, Pezzella
+De Paul, Dibu, Enzo Fernandez
+Dibu, Pezzella
+Enzo Fernandez, Pezzella
+Alvarez, Dybala, Gonzalo Montiel
+Dybala, Exequiel Palacios
+Di Maria, Dibu, Molina
+Alvarez, Di Maria
+Cuti Romero, Licha Martinez, Pezzella
+Guido Rodriguez, Molina
+Cuti Romero, Messi, Pezzella
+Gonzalo Montiel, Messi, Paredes
+Alvarez, Pezzella
+De Paul, Dibu, Licha Martinez
+Dybala, Lautaro, Molina
+Alvarez, Licha Martinez
+Licha Martinez, Mac Allister, Messi
+Enzo Fernandez, Licha Martinez, Molina
+Mac Allister, Molina
+Alvarez, Nico Gonzalez
+Lautaro, Paredes
+Dibu, Molina
+Molina, Otamendi

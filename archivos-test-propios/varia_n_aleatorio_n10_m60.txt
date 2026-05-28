@@ -1,0 +1,60 @@
+Alvarez, Molina
+Alvarez, Otamendi
+Mac Allister, Messi
+Messi, Tagliafico
+Mac Allister, Paredes
+De Paul, Messi, Molina
+Dibu, Molina
+Alvarez, Mac Allister, Paredes
+Messi, Molina, Paredes
+Dibu, Mac Allister
+Cuti Romero, De Paul, Tagliafico
+Mac Allister, Molina, Tagliafico
+Mac Allister, Messi, Molina
+De Paul, Messi
+Dibu, Mac Allister
+Alvarez, Messi
+Alvarez, Dibu, Tagliafico
+Mac Allister, Molina
+Cuti Romero, Mac Allister, Tagliafico
+Dibu, Molina, Paredes
+Dibu, Otamendi, Tagliafico
+De Paul, Molina
+Cuti Romero, Messi, Otamendi
+Alvarez, Dibu, Otamendi
+Mac Allister, Paredes
+Alvarez, Dibu, Mac Allister
+Dibu, Tagliafico
+Cuti Romero, Molina, Paredes
+Mac Allister, Otamendi
+Alvarez, Paredes
+De Paul, Otamendi, Paredes
+De Paul, Messi
+Dibu, Otamendi, Tagliafico
+Messi, Molina, Otamendi
+De Paul, Dibu, Tagliafico
+Cuti Romero, Tagliafico
+Cuti Romero, Mac Allister, Molina
+Cuti Romero, De Paul
+Alvarez, De Paul, Messi
+Messi, Molina
+Dibu, Paredes
+De Paul, Mac Allister, Otamendi
+De Paul, Otamendi, Tagliafico
+Alvarez, Mac Allister, Messi
+Alvarez, Cuti Romero
+Dibu, Messi
+Alvarez, Dibu
+De Paul, Messi, Paredes
+Dibu, Mac Allister, Otamendi
+Alvarez, Otamendi
+De Paul, Dibu
+Dibu, Tagliafico
+De Paul, Paredes
+Alvarez, Paredes, Tagliafico
+De Paul, Mac Allister, Messi
+Mac Allister, Tagliafico
+Dibu, Paredes, Tagliafico
+Cuti Romero, Molina
+Messi, Otamendi
+Cuti Romero, Mac Allister

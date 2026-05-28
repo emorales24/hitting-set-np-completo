@@ -1,0 +1,40 @@
+Almada, Lautaro, Nico Gonzalez
+Guido Rodriguez, Tagliafico
+Echeverri, Nico Gonzalez, Romero
+Echeverri, Palacios
+Dibu, Pezzella
+Dybala, Lautaro, Palacios
+Almada, Dybala, Garnacho
+Alvarez, Echeverri
+Ascacibar, Enzo Fernandez, Senesi
+Lautaro, Mac Allister
+Echeverri, Lautaro
+Ascacibar, Mac Allister, Zeballos
+Enzo Fernandez, Garnacho
+Colidio, Molina
+Alvarez, Ascacibar, Molina
+Echeverri, Nico Paz, Tagliafico
+Carboni, De Paul, Fernandez
+Colidio, Gonzalo Montiel
+Carboni, Otamendi, Soule
+Cuti Romero, De Paul
+Barco, Cuti Romero, Simeone
+Licha Martinez, Palacios
+De Paul, Molina, Senesi
+Exequiel Palacios, Fernandez
+Dibu, Medina
+Buonanotte, Colidio, Messi
+Paredes, Senesi
+Messi, Nico Gonzalez
+Castellanos, Tagliafico
+Molina, Otamendi, Senesi
+Enzo Fernandez, Licha Martinez
+Di Maria, Paredes
+De Paul, Gonzalo Montiel
+Buonanotte, Colidio, Zeballos
+Palacios, Pezzella, Zeballos
+Romero, Senesi
+Ascacibar, Guido Rodriguez, Pezzella
+Castellanos, Dibu, Lautaro
+Cuti Romero, Dibu, Mac Allister
+Alvarez, Messi
