@@ -1,184 +1,138 @@
-import time
-import os
 import csv
+import os
+import time
 
 from cargador_pedidos import cargar_pedidos_de_ruta
+from generador_datos import generar_benchmarks_controlados
+from hitting_set_aprox import hitting_set_aprox_lp
 from hitting_set_bt import hitting_set_backtracking
+from hitting_set_greedy import hitting_set_greedy
+from hitting_set_pl import hitting_set_pl
 from validador_polinomial import validar_cobertura
-from generador_datos import generar_sets_completos
 
 REPETICIONES = 3
 TIMEOUT_SEGUNDOS = 120
 
 
-def medir_tiempo(jugadores, pedidos):
+def medir_algoritmo(nombre_algoritmo, algoritmo, jugadores, pedidos):
     """
-    Mide cuanto tarda el bt.
-    Lo corre varias veces y devuelve el promedio.
-
-    Parametros:
-        jugadores: set con todos los jugadores
-        pedidos: lista de sets con los pedidos
-
-    Devuelve:
-        (solucion, tiempo_promedio, tiempos)
-        o (None, None, None) si tarda mas que el timeout
+    Mide un algoritmo varias veces y devuelve la solucion y el tiempo promedio.
     """
     tiempos = []
     solucion = None
 
-    for i in range(REPETICIONES):
+    for _ in range(REPETICIONES):
         inicio = time.time()
-        resultado = hitting_set_backtracking(jugadores, pedidos)
+        resultado = algoritmo(jugadores, pedidos)
         fin = time.time()
 
         duracion = fin - inicio
         tiempos.append(duracion)
         solucion = resultado
 
-        # Si una ejecucion se pasa del timeout, no se repite
         if duracion > TIMEOUT_SEGUNDOS:
-            return None, None, None
+            return None, None
 
     tiempo_promedio = sum(tiempos) / len(tiempos)
-    return solucion, tiempo_promedio, tiempos
+    return solucion, tiempo_promedio
 
 
-def medir_archivos_catedra():
+def armar_fila(info, algoritmo, solucion, tiempo_promedio, jugadores, pedidos, optimo):
     """
-    Corre mediciones sobre los archivos de la catedra.
+    Arma una fila comun para todos los algoritmos.
     """
-    directorio = "archivos-test-catedra"
-    archivos = [
-        "5.txt",
-        "7.txt",
-        "10_pocos.txt",
-        "10_varios.txt",
-        "10_todos.txt",
-        "15.txt",
-        "20.txt",
-        "50.txt",
-        "75.txt",
-        "100.txt",
-        "200.txt",
-    ]
+    valida = solucion is not None and validar_cobertura(solucion, jugadores, pedidos)
+    solucion_tam = len(solucion) if solucion is not None else None
+    ratio = None
+    if solucion_tam is not None and optimo:
+        ratio = solucion_tam / optimo
 
-    resultados_esperados = {
-        "5.txt": 2,
-        "7.txt": 2,
-        "10_pocos.txt": 3,
-        "10_varios.txt": 6,
-        "10_todos.txt": 10,
-        "15.txt": 4,
-        "20.txt": 5,
-        "50.txt": 6,
-        "75.txt": 8,
-        "100.txt": 9,
-        "200.txt": 9,
+    return {
+        "archivo": info["archivo"],
+        "experimento": info["experimento"],
+        "tipo": info["tipo"],
+        "algoritmo": algoritmo,
+        "n": info["n"],
+        "m": info["m"],
+        "solucion_tam": solucion_tam,
+        "optimo": optimo,
+        "ratio": ratio,
+        "tiempo_promedio": tiempo_promedio,
+        "valida": valida,
+    }
+
+
+def medir_benchmarks_controlados():
+    """
+    Genera los benchmarks controlados y los mide.
+
+    Para bt se miden todos los experimentos:
+    - varia_n
+    - varia_m
+    - crecen_juntos
+
+    Para comparar algoritmos se usa solo crecen_juntos, asi no salen
+    demasiados graficos ni se mezclan demasiadas historias.
+    """
+    directorio = "archivos-test-propios"
+    sets_info = generar_benchmarks_controlados(directorio)
+
+    algoritmos_extra = {
+        "greedy": hitting_set_greedy,
+        "pl": hitting_set_pl,
+        "aprox_lp": lambda jugadores, pedidos: hitting_set_aprox_lp(jugadores, pedidos)[
+            0
+        ],
     }
 
     resultados = []
 
-    print("=" * 70)
-    print("MEDICIONES - ARCHIVOS DE LA CATEDRA")
-    print("=" * 70)
+    print("=" * 80)
+    print("MEDICIONES CONTROLADAS")
+    print("=" * 80)
 
-    for archivo in archivos:
-        ruta = os.path.join(directorio, archivo)
+    for info in sets_info:
+        ruta = os.path.join(directorio, info["archivo"])
         jugadores, pedidos = cargar_pedidos_de_ruta(ruta)
 
-        solucion, tiempo_prom, tiempos = medir_tiempo(jugadores, pedidos)
-
-        if solucion is None:
-            print(f"{archivo}: TIMEOUT (>{TIMEOUT_SEGUNDOS}s)")
-            continue
-
-        es_valida = validar_cobertura(solucion, jugadores, pedidos)
-        esperado = resultados_esperados.get(archivo, "?")
-        cantidad_ok = len(solucion) == esperado
-
-        estado = "OK" if (es_valida and cantidad_ok) else "FALLO"
-
-        print(
-            f"{archivo:20s} | n={len(jugadores):4d} | m={len(pedidos):4d} | "
-            f"|C|={len(solucion):3d} (esperado {esperado}) | "
-            f"t={tiempo_prom:.6f}s | {estado}"
+        solucion_bt, tiempo_bt = medir_algoritmo(
+            "bt", hitting_set_backtracking, jugadores, pedidos
         )
+        optimo = len(solucion_bt) if solucion_bt is not None else None
 
         resultados.append(
-            {
-                "archivo": archivo,
-                "tipo": "catedra",
-                "n": len(jugadores),
-                "m": len(pedidos),
-                "solucion_tam": len(solucion),
-                "esperado": esperado,
-                "tiempo_promedio": tiempo_prom,
-                "valida": es_valida,
-                "correcta": cantidad_ok,
-            }
+            armar_fila(info, "bt", solucion_bt, tiempo_bt, jugadores, pedidos, optimo)
         )
 
-    return resultados
+        print(
+            f"{info['archivo']:38s} | bt | "
+            f"n={info['n']:3d} | m={info['m']:3d} | "
+            f"opt={optimo} | t={tiempo_bt}"
+        )
 
+        if info["experimento"] != "crecen_juntos":
+            continue
 
-def medir_archivos_propios():
-    """
-    Genera los sets propios y los mide.
-    """
-    directorio = "archivos-test-propios"
-    sets_info = generar_sets_completos(directorio)
-
-    resultados = []
-
-    print()
-    print("=" * 70)
-    print("MEDICIONES - ARCHIVOS PROPIOS")
-    print("=" * 70)
-
-    for nombre, n, m, tipo in sets_info:
-        ruta = os.path.join(directorio, nombre)
-        jugadores, pedidos = cargar_pedidos_de_ruta(ruta)
-
-        solucion, tiempo_prom, tiempos = medir_tiempo(jugadores, pedidos)
-
-        if solucion is None:
-            print(
-                f"{nombre:25s} | n={n:4d} | m={m:4d} | TIMEOUT (>{TIMEOUT_SEGUNDOS}s)"
+        for nombre_algoritmo, algoritmo in algoritmos_extra.items():
+            solucion, tiempo_promedio = medir_algoritmo(
+                nombre_algoritmo, algoritmo, jugadores, pedidos
             )
             resultados.append(
-                {
-                    "archivo": nombre,
-                    "tipo": tipo,
-                    "n": n,
-                    "m": m,
-                    "solucion_tam": None,
-                    "tiempo_promedio": None,
-                    "valida": None,
-                }
+                armar_fila(
+                    info,
+                    nombre_algoritmo,
+                    solucion,
+                    tiempo_promedio,
+                    jugadores,
+                    pedidos,
+                    optimo,
+                )
             )
-            continue
-
-        es_valida = validar_cobertura(solucion, jugadores, pedidos)
-
-        print(
-            f"{nombre:25s} | n={n:4d} | m={m:4d} | "
-            f"|C|={len(solucion):3d} | "
-            f"t={tiempo_prom:.6f}s | "
-            f"valida={es_valida} | tipo={tipo}"
-        )
-
-        resultados.append(
-            {
-                "archivo": nombre,
-                "tipo": tipo,
-                "n": n,
-                "m": m,
-                "solucion_tam": len(solucion),
-                "tiempo_promedio": tiempo_prom,
-                "valida": es_valida,
-            }
-        )
+            solucion_tam = len(solucion) if solucion is not None else None
+            print(
+                f"{info['archivo']:38s} | {nombre_algoritmo:8s} | "
+                f"|C|={solucion_tam} | t={tiempo_promedio}"
+            )
 
     return resultados
 
@@ -190,7 +144,21 @@ def guardar_resultados_csv(resultados, ruta_csv):
     if not resultados:
         return
 
-    campos = list(resultados[0].keys())
+    os.makedirs(os.path.dirname(ruta_csv), exist_ok=True)
+
+    campos = [
+        "archivo",
+        "experimento",
+        "tipo",
+        "algoritmo",
+        "n",
+        "m",
+        "solucion_tam",
+        "optimo",
+        "ratio",
+        "tiempo_promedio",
+        "valida",
+    ]
 
     with open(ruta_csv, "w", encoding="utf-8", newline="") as archivo:
         escritor = csv.DictWriter(archivo, fieldnames=campos)
@@ -202,31 +170,21 @@ def guardar_resultados_csv(resultados, ruta_csv):
 
 
 def main():
-    todos_los_resultados = []
+    resultados = medir_benchmarks_controlados()
 
-    resultados_catedra = medir_archivos_catedra()
-    todos_los_resultados.extend(resultados_catedra)
-
-    resultados_propios = medir_archivos_propios()
-    todos_los_resultados.extend(resultados_propios)
+    total = len(resultados)
+    validos = sum(1 for fila in resultados if fila.get("valida") is True)
+    timeouts = sum(1 for fila in resultados if fila.get("tiempo_promedio") is None)
 
     print()
-    print("=" * 70)
+    print("=" * 80)
     print("RESUMEN")
-    print("=" * 70)
-
-    total = len(todos_los_resultados)
-    validos = sum(1 for r in todos_los_resultados if r.get("valida") is True)
-    timeouts = sum(1 for r in todos_los_resultados if r.get("tiempo_promedio") is None)
-
-    print(f"Total de instancias: {total}")
+    print("=" * 80)
+    print(f"Total de mediciones: {total}")
     print(f"Soluciones validas:  {validos}")
     print(f"Timeouts:            {timeouts}")
 
-    os.makedirs("resultados-propios", exist_ok=True)
-    guardar_resultados_csv(
-        todos_los_resultados, "resultados-propios/resultados_mediciones_bt.csv"
-    )
+    guardar_resultados_csv(resultados, "resultados-propios/resultados_mediciones.csv")
 
 
 if __name__ == "__main__":

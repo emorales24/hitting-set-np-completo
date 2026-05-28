@@ -1,164 +1,220 @@
 import csv
+import os
 from collections import defaultdict
 from pathlib import Path
 
+BASE = Path(__file__).resolve().parent
+os.environ.setdefault("MPLCONFIGDIR", str(BASE / ".matplotlib-cache"))
+
 try:
     import matplotlib.pyplot as plt
-except ImportError as exc:  # pragma: no cover - depende del entorno
+except ImportError as exc:
     raise SystemExit(
-        "Falta matplotlib. Instalalo para poder generar los graficos del benchmark."
+        "Falta matplotlib. Instalalo para poder generar los graficos."
     ) from exc
 
 
+ESTILO = "Solarize_Light2"
+TIPOS = ["facil", "aleatorio", "dificil"]
+
+
 def cargar_resultados(ruta_csv):
+    filas = []
+
     with ruta_csv.open("r", encoding="utf-8", newline="") as archivo:
         reader = csv.DictReader(archivo)
-        filas = []
+        columnas = set(reader.fieldnames or [])
+        requeridas = {
+            "archivo",
+            "experimento",
+            "tipo",
+            "algoritmo",
+            "n",
+            "m",
+            "solucion_tam",
+            "optimo",
+            "ratio",
+            "tiempo_promedio",
+        }
+        faltantes = requeridas - columnas
+        if faltantes:
+            raise SystemExit(
+                "El csv tiene formato viejo o incompleto. "
+                "Ejecuta primero: python3 mediciones.py"
+            )
+
         for fila in reader:
-            tiempo_str = (fila.get("tiempo_promedio") or "").strip()
-            if not tiempo_str:
-                # Timeout o fila incompleta: no se grafica.
+            tiempo = (fila.get("tiempo_promedio") or "").strip()
+            if not tiempo:
                 continue
 
+            ratio = (fila.get("ratio") or "").strip()
             filas.append(
                 {
-                    "archivo": fila.get("archivo", ""),
+                    "archivo": fila["archivo"],
+                    "experimento": fila["experimento"],
+                    "tipo": fila["tipo"],
+                    "algoritmo": fila["algoritmo"],
                     "n": int(fila["n"]),
                     "m": int(fila["m"]),
-                    "tiempo_promedio": float(tiempo_str),
+                    "solucion_tam": int(fila["solucion_tam"]),
+                    "optimo": int(fila["optimo"]) if fila.get("optimo") else None,
+                    "ratio": float(ratio) if ratio else None,
+                    "tiempo_promedio": float(tiempo),
                 }
             )
 
-    filas.sort(key=lambda x: (x["n"], x["m"]))
     return filas
 
 
-def agrupar_por_tamanio(filas):
-    grupos = defaultdict(list)
-    for fila in filas:
-        grupos[(fila["n"], fila["m"])].append(fila["tiempo_promedio"])
-
+def filtrar(filas, **condiciones):
     resultado = []
-    for (n, m), tiempos in grupos.items():
-        promedio = sum(tiempos) / len(tiempos)
-        resultado.append(
-            {
-                "n": n,
-                "m": m,
-                "tiempo_promedio": promedio,
-                "repeticiones": len(tiempos),
-            }
-        )
-
-    resultado.sort(key=lambda x: (x["n"], x["m"]))
+    for fila in filas:
+        coincide = True
+        for clave, valor in condiciones.items():
+            if fila.get(clave) != valor:
+                coincide = False
+                break
+        if coincide:
+            resultado.append(fila)
     return resultado
 
 
-def promediar_por_eje(filas_agrupadas, clave):
-    acumulado = defaultdict(list)
-    for fila in filas_agrupadas:
-        acumulado[fila[clave]].append(fila["tiempo_promedio"])
+def puntos_por_serie(filas, serie, eje_x, eje_y):
+    grupos = defaultdict(list)
+    for fila in filas:
+        grupos[fila[serie]].append((fila[eje_x], fila[eje_y]))
 
-    xs = sorted(acumulado)
-    ys = [sum(acumulado[x]) / len(acumulado[x]) for x in xs]
-    return xs, ys
+    resultado = {}
+    for nombre, puntos in grupos.items():
+        puntos.sort(key=lambda punto: punto[0])
+        resultado[nombre] = puntos
+    return resultado
 
 
-def graficar_tiempo_por_n(filas, salida_png):
-    filas_agrupadas = agrupar_por_tamanio(filas)
-    tamanios, tiempos = promediar_por_eje(filas_agrupadas, "n")
+def aplicar_estilo():
+    plt.style.use(ESTILO)
+    plt.rcParams["figure.figsize"] = (9, 5.5)
+    plt.rcParams["axes.grid"] = True
+    plt.rcParams["grid.alpha"] = 0.35
 
-    plt.figure(figsize=(9, 5.5))
-    plt.plot(tamanios, tiempos, marker="o", linewidth=1.8)
-    plt.title("TP3 BT: tiempo promedio segun cantidad de jugadores")
-    plt.xlabel("Cantidad de jugadores (n)")
-    plt.ylabel("Tiempo promedio (segundos)")
+
+def graficar_series(filas, serie, eje_x, eje_y, titulo, xlabel, ylabel, salida_png):
+    aplicar_estilo()
+    series = puntos_por_serie(filas, serie, eje_x, eje_y)
+
+    plt.figure()
+    for nombre in sorted(series):
+        puntos = series[nombre]
+        xs = [x for x, _ in puntos]
+        ys = [y for _, y in puntos]
+        plt.plot(xs, ys, marker="o", linewidth=1.8, label=nombre)
+
+    plt.title(titulo)
+    plt.xlabel(xlabel)
+    plt.ylabel(ylabel)
     plt.yscale("log")
-    plt.grid(True, alpha=0.3)
+    plt.legend()
     plt.tight_layout()
     plt.savefig(salida_png, dpi=160)
     plt.close()
 
 
-def graficar_tiempo_por_m(filas, salida_png):
-    filas_agrupadas = agrupar_por_tamanio(filas)
-    pedidos, tiempos = promediar_por_eje(filas_agrupadas, "m")
+def graficar_ratio(filas, salida_png):
+    aplicar_estilo()
+    series = puntos_por_serie(filas, "algoritmo", "n", "ratio")
 
-    plt.figure(figsize=(9, 5.5))
-    plt.plot(pedidos, tiempos, marker="o", linewidth=1.8)
-    plt.title("TP3 BT: tiempo promedio segun cantidad de pedidos")
-    plt.xlabel("Cantidad de pedidos (m)")
-    plt.ylabel("Tiempo promedio (segundos)")
-    plt.yscale("log")
-    plt.grid(True, alpha=0.3)
-    plt.tight_layout()
-    plt.savefig(salida_png, dpi=160)
-    plt.close()
+    plt.figure()
+    for algoritmo in sorted(series):
+        puntos = [(x, y) for x, y in series[algoritmo] if y is not None]
+        if not puntos:
+            continue
+        xs = [x for x, _ in puntos]
+        ys = [y for _, y in puntos]
+        plt.plot(xs, ys, marker="o", linewidth=1.8, label=algoritmo)
 
-
-def graficar_loglog(filas, salida_png):
-    filas_agrupadas = agrupar_por_tamanio(filas)
-    tamanios, tiempos = promediar_por_eje(filas_agrupadas, "n")
-
-    plt.figure(figsize=(9, 5.5))
-    plt.loglog(tamanios, tiempos, marker="o", linewidth=1.8)
-    plt.title("TP3 BT: escala log-log segun cantidad de jugadores")
-    plt.xlabel("Cantidad de jugadores (n)")
-    plt.ylabel("Tiempo promedio (segundos)")
-    plt.grid(True, which="both", alpha=0.3)
-    plt.tight_layout()
-    plt.savefig(salida_png, dpi=160)
-    plt.close()
-
-
-def graficar_tiempo_ordenado_por_tamanio(filas, salida_png):
-    filas_agrupadas = agrupar_por_tamanio(filas)
-    puntos_ordenados = sorted(
-        filas_agrupadas, key=lambda x: x["tiempo_promedio"]
-    )
-    posiciones = list(range(1, len(puntos_ordenados) + 1))
-    tiempos = [fila["tiempo_promedio"] for fila in puntos_ordenados]
-
-    plt.figure(figsize=(9, 5.5))
-    plt.plot(posiciones, tiempos, marker="o", linewidth=1.8)
-    plt.title("TP3 BT: tiempos por tamanio ordenados de menor a mayor")
-    plt.xlabel("Indice de instancia (agrupada por tamanio n,m)")
-    plt.ylabel("Tiempo promedio (segundos)")
-    plt.yscale("log")
-    plt.grid(True, alpha=0.3)
+    plt.axhline(1, color="gray", linewidth=1, linestyle="--")
+    plt.title("Calidad de solucion por algoritmo")
+    plt.xlabel("Cantidad de jugadores (n), con m = 2n")
+    plt.ylabel("|C_algoritmo| / |C_optimo|")
+    plt.legend()
     plt.tight_layout()
     plt.savefig(salida_png, dpi=160)
     plt.close()
 
 
 def main():
-    base = Path(__file__).resolve().parent
-    csv_path = base / "resultados_mediciones_bt.csv"
+    csv_path = BASE / "resultados_mediciones.csv"
 
     if not csv_path.exists():
         raise SystemExit(
-            f"No se encontro el benchmark en: {csv_path}. "
-            "Ejecuta mediciones.py primero."
+            f"No se encontro el benchmark en: {csv_path}. Ejecuta mediciones.py primero."
         )
 
     filas = cargar_resultados(csv_path)
     if not filas:
         raise SystemExit("No hay filas validas con tiempo para graficar.")
 
-    salida_por_n = base / "grafico_tiempo_por_n.png"
-    salida_por_m = base / "grafico_tiempo_por_m.png"
-    salida_loglog = base / "grafico_tiempo_loglog.png"
-    salida_ordenado = base / "grafico_tiempo_ordenado_por_tamanio.png"
+    bt_varia_n = filtrar(filas, algoritmo="bt", experimento="varia_n")
+    bt_varia_m = filtrar(filas, algoritmo="bt", experimento="varia_m")
+    bt_crecen = filtrar(filas, algoritmo="bt", experimento="crecen_juntos")
 
-    graficar_tiempo_por_n(filas, salida_por_n)
-    graficar_tiempo_por_m(filas, salida_por_m)
-    graficar_loglog(filas, salida_loglog)
-    graficar_tiempo_ordenado_por_tamanio(filas, salida_ordenado)
+    comparacion_algoritmos = [
+        fila
+        for fila in filas
+        if fila["experimento"] == "crecen_juntos" and fila["tipo"] == "aleatorio"
+    ]
 
-    print(f"Grafico listo: {salida_por_n}")
-    print(f"Grafico listo: {salida_por_m}")
-    print(f"Grafico listo: {salida_loglog}")
-    print(f"Grafico listo: {salida_ordenado}")
+    salidas = [
+        (
+            bt_varia_n,
+            "tipo",
+            "n",
+            "tiempo_promedio",
+            "BT variando n, con m fijo",
+            "Cantidad de jugadores (n), con m = 60",
+            "Tiempo promedio (segundos)",
+            BASE / "bt_varia_n_m_fijo.png",
+        ),
+        (
+            bt_varia_m,
+            "tipo",
+            "m",
+            "tiempo_promedio",
+            "BT variando m, con n fijo",
+            "Cantidad de pedidos (m), con n = 40",
+            "Tiempo promedio (segundos)",
+            BASE / "bt_varia_m_n_fijo.png",
+        ),
+        (
+            bt_crecen,
+            "tipo",
+            "n",
+            "tiempo_promedio",
+            "BT con n y m creciendo juntos",
+            "Cantidad de jugadores (n), con m = 2n",
+            "Tiempo promedio (segundos)",
+            BASE / "bt_crecen_juntos.png",
+        ),
+        (
+            comparacion_algoritmos,
+            "algoritmo",
+            "n",
+            "tiempo_promedio",
+            "Tiempo por algoritmo en instancias aleatorias",
+            "Cantidad de jugadores (n), con m = 2n",
+            "Tiempo promedio (segundos)",
+            BASE / "comparacion_tiempos_algoritmos.png",
+        ),
+    ]
+
+    for args in salidas:
+        graficar_series(*args)
+        print(f"Grafico listo: {args[-1]}")
+
+    salida_ratio = BASE / "comparacion_calidad_algoritmos.png"
+    graficar_ratio(comparacion_algoritmos, salida_ratio)
+    print(f"Grafico listo: {salida_ratio}")
 
 
 if __name__ == "__main__":

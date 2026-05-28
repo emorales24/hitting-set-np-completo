@@ -44,9 +44,10 @@ def hitting_set_aprox_lp(jugadores, pedidos):
     # Si x_j >= 1/b, lo agregamos a la solucion.
     umbral = 1.0 / valor_b
     solucion = set()
+    tolerancia = 1e-7
     for jugador in jugadores:
         valor_variable = value(variables[jugador])
-        if valor_variable >= umbral:
+        if valor_variable is not None and valor_variable + tolerancia >= umbral:
             solucion.add(jugador)
 
     return solucion, valor_b

@@ -152,7 +152,7 @@ def generar_instancia(n, m, min_tam_pedido, max_tam_pedido, semilla=None):
     return jugadores, pedidos
 
 
-def generar_caso_facil(n, semilla=None):
+def generar_caso_facil(n, m=None, semilla=None):
     """
     Genera un caso facil.
     Hay un jugador que aparece en muchos pedidos, entonces
@@ -162,7 +162,8 @@ def generar_caso_facil(n, semilla=None):
         random.seed(semilla)
 
     jugadores = _generar_jugadores(n)
-    m = n * 2
+    if m is None:
+        m = n * 2
     pedidos = []
     estrella = jugadores[0]
 
@@ -176,7 +177,7 @@ def generar_caso_facil(n, semilla=None):
     return jugadores, pedidos
 
 
-def generar_caso_dificil(n, semilla=None):
+def generar_caso_dificil(n, m=None, semilla=None):
     """
     Genera un caso mas dificil para el bt.
     Los pedidos son chicos y se pisan poco, entonces hay mas ramas.
@@ -185,7 +186,8 @@ def generar_caso_dificil(n, semilla=None):
         random.seed(semilla)
 
     jugadores = _generar_jugadores(n)
-    m = n * 3
+    if m is None:
+        m = n * 3
     pedidos = []
 
     for _ in range(m):
@@ -229,61 +231,72 @@ def guardar_instancia(ruta, jugadores, pedidos):
             archivo.write(linea + "\n")
 
 
-def generar_sets_completos(directorio_salida, semilla=42):
+def generar_instancia_por_tipo(tipo, n, m, semilla=None):
     """
-    Genera sets propios (los usados para medir).
+    Genera una instancia de un tipo dado, manteniendo n y m controlados.
 
-    Devuelve:
-        lista con (nombre_archivo, n, m, tipo)
+    puede ser:
+    - facil: hay un jugador que aparece mucho
+    - aleatorio: pedidos al azar
+    - dificil: pedidos chicos y con poca superposicion
     """
+    if tipo == "facil":
+        return generar_caso_facil(n, m=m, semilla=semilla)
+
+    if tipo == "aleatorio":
+        max_tam = max(3, n // 4)
+        return generar_instancia(n, m, 2, max_tam, semilla=semilla)
+
+    if tipo == "dificil":
+        return generar_caso_dificil(n, m=m, semilla=semilla)
+
+    raise ValueError(f"Tipo de instancia no soportada: {tipo}")
+
+
+def generar_benchmarks_controlados(directorio_salida, semilla=42):
+
     if not os.path.exists(directorio_salida):
         os.makedirs(directorio_salida)
 
     sets_generados = []
+    tipos = ["facil", "aleatorio", "dificil"]
 
-    # Sets aleatorios de distintos tamanios.
-    tamanos = [10, 15, 20, 30, 40, 50, 75, 100]
-    for n in tamanos:
-        m = n * 2
-        min_tam = 2
-        max_tam = max(3, n // 4)
-        nombre = f"aleatorio_{n}.txt"
-        ruta = os.path.join(directorio_salida, nombre)
-        jugadores, pedidos = generar_instancia(
-            n, m, min_tam, max_tam, semilla=semilla + n
-        )
-        guardar_instancia(ruta, jugadores, pedidos)
-        sets_generados.append((nombre, n, m, "aleatorio"))
+    experimentos = [
+        ("varia_n", [(n, 60) for n in [10, 15, 20, 25, 30, 40, 50]]),
+        ("varia_m", [(40, m) for m in [10, 20, 40, 60, 80, 120]]),
+        ("crecen_juntos", [(n, 2 * n) for n in [10, 15, 20, 25, 30, 40, 50]]),
+    ]
 
-    # Sets faciles.
-    for n in [20, 50, 100]:
-        nombre = f"facil_{n}.txt"
-        ruta = os.path.join(directorio_salida, nombre)
-        jugadores, pedidos = generar_caso_facil(n, semilla=semilla + n + 1000)
-        guardar_instancia(ruta, jugadores, pedidos)
-        sets_generados.append((nombre, n, len(pedidos), "facil"))
-
-    # Sets dificiles.
-    for n in [10, 15, 20, 25, 30]:
-        nombre = f"dificil_{n}.txt"
-        ruta = os.path.join(directorio_salida, nombre)
-        jugadores, pedidos = generar_caso_dificil(n, semilla=semilla + n + 2000)
-        guardar_instancia(ruta, jugadores, pedidos)
-        sets_generados.append((nombre, n, len(pedidos), "dificil"))
-
-    # Sets donde todos son necesarios.
-    for n in [5, 10, 15]:
-        nombre = f"todos_{n}.txt"
-        ruta = os.path.join(directorio_salida, nombre)
-        jugadores, pedidos = generar_caso_todos(n, semilla=semilla + n + 3000)
-        guardar_instancia(ruta, jugadores, pedidos)
-        sets_generados.append((nombre, n, len(pedidos), "todos"))
+    contador = 0
+    for experimento, tamanios in experimentos:
+        for tipo in tipos:
+            for indice, (n, m) in enumerate(tamanios):
+                nombre = f"{experimento}_{tipo}_n{n}_m{m}.txt"
+                ruta = os.path.join(directorio_salida, nombre)
+                semilla_instancia = semilla + contador
+                contador += 1
+                jugadores, pedidos = generar_instancia_por_tipo(
+                    tipo, n, m, semilla=semilla_instancia
+                )
+                guardar_instancia(ruta, jugadores, pedidos)
+                sets_generados.append(
+                    {
+                        "archivo": nombre,
+                        "experimento": experimento,
+                        "tipo": tipo,
+                        "n": n,
+                        "m": len(pedidos),
+                    }
+                )
 
     return sets_generados
 
 
 if __name__ == "__main__":
-    sets = generar_sets_completos("archivos-test-propios")
+    sets = generar_benchmarks_controlados("archivos-test-propios")
     print(f"Se generaron {len(sets)} sets de datos:")
-    for nombre, n, m, tipo in sets:
-        print(f"  {nombre}: n={n}, m={m}, tipo={tipo}")
+    for info in sets:
+        print(
+            f"  {info['archivo']}: exp={info['experimento']}, "
+            f"tipo={info['tipo']}, n={info['n']}, m={info['m']}"
+        )
