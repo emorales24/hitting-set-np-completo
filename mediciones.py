@@ -43,6 +43,8 @@ def armar_fila(info, algoritmo, solucion, tiempo_promedio, jugadores, pedidos, o
     """
     valida = solucion is not None and validar_cobertura(solucion, jugadores, pedidos)
     solucion_tam = len(solucion) if solucion is not None else None
+
+    # Mide la calidad contra el optimo: 1 es optimo, mas grande es peor.
     ratio = None
     if solucion_tam is not None and optimo:
         ratio = solucion_tam / optimo

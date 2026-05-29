@@ -6,16 +6,41 @@ from pathlib import Path
 BASE = Path(__file__).resolve().parent
 os.environ.setdefault("MPLCONFIGDIR", str(BASE / ".matplotlib-cache"))
 
-try:
-    import matplotlib.pyplot as plt
-except ImportError as exc:
-    raise SystemExit(
-        "Falta matplotlib. Instalalo para poder generar los graficos."
-    ) from exc
-
+import matplotlib.pyplot as plt
 
 ESTILO = "Solarize_Light2"
 TIPOS = ["facil", "aleatorio", "dificil"]
+
+# Paleta Okabe-Ito: suele funcionar mejor para daltonismo.
+COLORES = {
+    "facil": "#0072B2",
+    "aleatorio": "#E69F00",
+    "dificil": "#D55E00",
+    "bt": "#0072B2",
+    "greedy": "#E69F00",
+    "pl": "#009E73",
+    "aprox_lp": "#CC79A7",
+}
+
+MARCADORES = {
+    "facil": "o",
+    "aleatorio": "s",
+    "dificil": "^",
+    "bt": "o",
+    "greedy": "s",
+    "pl": "^",
+    "aprox_lp": "D",
+}
+
+LINEAS = {
+    "facil": "-",
+    "aleatorio": "--",
+    "dificil": "-.",
+    "bt": "-",
+    "greedy": "--",
+    "pl": "-.",
+    "aprox_lp": ":",
+}
 
 
 def cargar_resultados(ruta_csv):
@@ -108,7 +133,16 @@ def graficar_series(filas, serie, eje_x, eje_y, titulo, xlabel, ylabel, salida_p
         puntos = series[nombre]
         xs = [x for x, _ in puntos]
         ys = [y for _, y in puntos]
-        plt.plot(xs, ys, marker="o", linewidth=1.8, label=nombre)
+        plt.plot(
+            xs,
+            ys,
+            color=COLORES.get(nombre),
+            linestyle=LINEAS.get(nombre, "-"),
+            marker=MARCADORES.get(nombre, "o"),
+            linewidth=2.2,
+            markersize=6,
+            label=nombre,
+        )
 
     plt.title(titulo)
     plt.xlabel(xlabel)
@@ -122,6 +156,9 @@ def graficar_series(filas, serie, eje_x, eje_y, titulo, xlabel, ylabel, salida_p
 
 def graficar_ratio(filas, salida_png):
     aplicar_estilo()
+
+    # El ratio viene de mediciones.py: |C_algoritmo| / |C_optimo|.
+    # Sirve para ver que tan lejos queda cada algoritmo del optimo.
     series = puntos_por_serie(filas, "algoritmo", "n", "ratio")
 
     plt.figure()
@@ -131,10 +168,19 @@ def graficar_ratio(filas, salida_png):
             continue
         xs = [x for x, _ in puntos]
         ys = [y for _, y in puntos]
-        plt.plot(xs, ys, marker="o", linewidth=1.8, label=algoritmo)
+        plt.plot(
+            xs,
+            ys,
+            color=COLORES.get(algoritmo),
+            linestyle=LINEAS.get(algoritmo, "-"),
+            marker=MARCADORES.get(algoritmo, "o"),
+            linewidth=2.2,
+            markersize=6,
+            label=algoritmo,
+        )
 
     plt.axhline(1, color="gray", linewidth=1, linestyle="--")
-    plt.title("Calidad de solucion por algoritmo")
+    plt.title("Aproximación a la solución por algoritmo")
     plt.xlabel("Cantidad de jugadores (n), con m = 2n")
     plt.ylabel("|C_algoritmo| / |C_optimo|")
     plt.legend()
@@ -212,7 +258,7 @@ def main():
         graficar_series(*args)
         print(f"Grafico listo: {args[-1]}")
 
-    salida_ratio = BASE / "comparacion_calidad_algoritmos.png"
+    salida_ratio = BASE / "comparacion_aproximacion_algoritmos.png"
     graficar_ratio(comparacion_algoritmos, salida_ratio)
     print(f"Grafico listo: {salida_ratio}")
 
