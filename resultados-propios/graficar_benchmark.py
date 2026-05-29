@@ -11,7 +11,6 @@ import matplotlib.pyplot as plt
 ESTILO = "Solarize_Light2"
 TIPOS = ["facil", "aleatorio", "dificil"]
 
-# Paleta Okabe-Ito: suele funcionar mejor para daltonismo.
 COLORES = {
     "facil": "#0072B2",
     "aleatorio": "#E69F00",
