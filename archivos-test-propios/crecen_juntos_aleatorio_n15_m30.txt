@@ -1,0 +1,30 @@
+Lautaro, Paredes
+Alvarez, Cuti Romero, Dibu
+Enzo Fernandez, Molina
+De Paul, Gonzalo Montiel, Mac Allister
+Cuti Romero, Dibu, Paredes
+De Paul, Messi, Paredes
+Paredes, Tagliafico
+Alvarez, Otamendi
+Dibu, Molina
+Dibu, Mac Allister, Molina
+Cuti Romero, Enzo Fernandez, Messi
+De Paul, Otamendi
+Alvarez, Cuti Romero
+Di Maria, Lautaro
+Cuti Romero, Otamendi, Paredes
+Cuti Romero, Gonzalo Montiel, Otamendi
+Di Maria, Lautaro, Molina
+Alvarez, Enzo Fernandez, Otamendi
+De Paul, Di Maria, Otamendi
+Di Maria, Gonzalo Montiel, Otamendi
+Di Maria, Lautaro
+Cuti Romero, Mac Allister, Molina
+Alvarez, De Paul, Di Maria
+Cuti Romero, Tagliafico
+Enzo Fernandez, Mac Allister, Paredes
+Dibu, Dybala, Otamendi
+De Paul, Molina, Paredes
+Di Maria, Dybala, Messi
+De Paul, Mac Allister
+Enzo Fernandez, Messi, Otamendi

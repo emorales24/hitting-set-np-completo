@@ -1,0 +1,20 @@
+Messi, Tagliafico
+Dibu, Messi
+De Paul, Messi, Paredes
+Alvarez, Mac Allister
+Alvarez, Cuti Romero, Otamendi
+Alvarez, Molina
+Molina, Paredes
+Cuti Romero, Dibu, Otamendi
+Alvarez, Tagliafico
+Alvarez, Messi, Paredes
+Alvarez, De Paul, Mac Allister
+Dibu, Molina, Paredes
+Dibu, Messi
+De Paul, Molina
+Otamendi, Tagliafico
+Molina, Tagliafico
+Dibu, Paredes
+Alvarez, De Paul, Tagliafico
+De Paul, Molina, Otamendi
+Cuti Romero, De Paul, Dibu

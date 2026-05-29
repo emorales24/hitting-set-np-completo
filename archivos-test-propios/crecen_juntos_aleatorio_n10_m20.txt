@@ -1,0 +1,20 @@
+Alvarez, Cuti Romero, De Paul
+Messi, Otamendi
+Cuti Romero, De Paul, Tagliafico
+Cuti Romero, Paredes
+Alvarez, Molina, Paredes
+Cuti Romero, Mac Allister
+Alvarez, Tagliafico
+Cuti Romero, De Paul
+Cuti Romero, De Paul, Paredes
+De Paul, Otamendi
+Messi, Otamendi, Tagliafico
+Molina, Otamendi, Tagliafico
+Cuti Romero, Tagliafico
+Cuti Romero, Messi, Otamendi
+Cuti Romero, Mac Allister, Messi
+Otamendi, Paredes
+Mac Allister, Molina
+Alvarez, De Paul, Molina
+Alvarez, Tagliafico
+Cuti Romero, Molina, Paredes
