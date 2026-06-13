@@ -9,7 +9,7 @@ es el conjunto de jugadores elegidos para cubrir todos los pedidos. La parte
 teorica usa la version de decision con un valor `k`; la parte practica busca
 el optimo con backtracking.
 
-**Informe: `agregar link`**
+**Informe: https://drive.google.com/file/d/1R56lCqlBcYNNm119iOjqoO-3f4_4QO6n/view?usp=drive_link**
 
 ## Dependencias
 
