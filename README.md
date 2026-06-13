@@ -39,7 +39,8 @@ python3 tp3.py archivos-test-catedra/5.txt
 python3 tp3.py archivos-test-catedra/200.txt
 ```
 
-La salida muestra la cantidad minima encontrada y los jugadores elegidos.
+La salida muestra la cantidad minima encontrada por backtracking y los
+jugadores elegidos.
 
 ## Generar instancias propias
 
@@ -85,7 +86,8 @@ Esto genera:
 resultados-propios/resultados_mediciones.csv
 ```
 
-El CSV incluye:
+El CSV incluye mediciones de backtracking, programacion lineal entera,
+aproximacion por PL relajada y greedy. Sus columnas son:
 
 ```text
 experimento, tipo, algoritmo, n, m, solucion_tam, optimo, ratio, tiempo_promedio, valida
@@ -106,5 +108,5 @@ resultados-propios/bt_varia_n_m_fijo.png
 resultados-propios/bt_varia_m_n_fijo.png
 resultados-propios/bt_crecen_juntos.png
 resultados-propios/comparacion_tiempos_algoritmos.png
-resultados-propios/comparacion_calidad_algoritmos.png
+resultados-propios/comparacion_aproximacion_algoritmos.png
 ```
