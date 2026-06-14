@@ -1,0 +1,60 @@
+Dybala, Mac Allister
+Alvarez, Di Maria, Dibu, Dybala, Messi, Tagliafico
+Messi, Molina, Otamendi
+Cuti Romero, Dibu, Dybala, Messi, Molina
+Cuti Romero, Otamendi
+Lautaro, Molina, Paredes
+Cuti Romero, Dibu, Messi, Molina, Paredes
+Cuti Romero, Messi
+Dibu, Mac Allister, Messi, Otamendi, Paredes
+Dibu, Enzo Fernandez, Messi
+Alvarez, Di Maria, Dybala, Messi, Otamendi
+Dibu, Enzo Fernandez, Lautaro, Messi
+Alvarez, Cuti Romero, Di Maria, Dybala, Messi
+Mac Allister, Tagliafico
+Dybala, Messi, Molina, Tagliafico
+Alvarez, Cuti Romero, Messi
+Lautaro, Mac Allister, Messi, Paredes
+Cuti Romero, Lautaro, Messi, Paredes, Tagliafico
+Cuti Romero, Dybala, Messi
+Dibu, Dybala, Messi, Otamendi, Tagliafico
+Alvarez, Dibu, Enzo Fernandez, Messi, Molina
+Di Maria, Enzo Fernandez, Messi, Molina
+Alvarez, Enzo Fernandez, Mac Allister, Messi, Molina, Paredes
+Cuti Romero, Messi, Otamendi
+Dybala, Gonzalo Montiel, Messi
+Alvarez, De Paul, Gonzalo Montiel, Lautaro
+De Paul, Enzo Fernandez, Messi, Otamendi, Tagliafico
+Enzo Fernandez, Messi, Otamendi
+Alvarez, Messi, Paredes
+Lautaro, Messi, Molina, Tagliafico
+Dibu, Dybala, Messi
+De Paul, Dibu, Enzo Fernandez, Messi, Molina
+Alvarez, Gonzalo Montiel, Messi
+Cuti Romero, Messi, Otamendi, Paredes
+De Paul, Dibu, Messi
+Di Maria, Dibu, Enzo Fernandez, Lautaro, Messi
+Alvarez, Cuti Romero, De Paul, Messi
+Cuti Romero, Di Maria, Gonzalo Montiel, Mac Allister, Messi, Paredes
+Dybala, Lautaro, Mac Allister, Messi, Otamendi, Tagliafico
+Dibu, Dybala, Messi, Molina, Otamendi, Paredes
+Dybala, Messi, Paredes
+Gonzalo Montiel, Lautaro
+De Paul, Gonzalo Montiel, Paredes
+Cuti Romero, Mac Allister, Messi
+Alvarez, Dibu, Mac Allister, Messi, Molina, Tagliafico
+Alvarez, Cuti Romero, Dibu, Messi, Tagliafico
+Dibu, Dybala, Lautaro, Molina
+De Paul, Enzo Fernandez, Lautaro, Mac Allister, Messi
+Alvarez, Cuti Romero, De Paul, Mac Allister, Molina
+Cuti Romero, Di Maria, Messi, Otamendi
+Cuti Romero, De Paul, Lautaro, Messi
+Mac Allister, Molina, Tagliafico
+Dibu, Enzo Fernandez, Mac Allister
+Cuti Romero, Dibu, Mac Allister, Messi, Molina
+Cuti Romero, Dibu, Dybala, Messi, Paredes
+Messi, Molina, Paredes
+Di Maria, Dibu, Gonzalo Montiel, Messi, Otamendi, Tagliafico
+Dibu, Enzo Fernandez, Lautaro, Mac Allister, Messi, Tagliafico
+Dibu, Dybala, Messi, Tagliafico
+Alvarez, Cuti Romero, Enzo Fernandez, Messi, Tagliafico

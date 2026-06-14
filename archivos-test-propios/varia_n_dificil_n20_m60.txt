@@ -1,0 +1,60 @@
+Exequiel Palacios, Molina
+Gonzalo Montiel, Molina
+Dybala, Otamendi, Paredes
+Enzo Fernandez, Exequiel Palacios, Paredes
+Messi, Nico Gonzalez
+Cuti Romero, Nico Gonzalez
+Dybala, Lautaro, Pezzella
+De Paul, Mac Allister
+Alvarez, Dibu, Paredes
+Alvarez, Cuti Romero, Tagliafico
+Gonzalo Montiel, Molina
+Exequiel Palacios, Mac Allister
+Messi, Otamendi
+De Paul, Licha Martinez, Nico Gonzalez
+Di Maria, Guido Rodriguez, Lautaro
+Otamendi, Paredes
+Gonzalo Montiel, Molina
+Cuti Romero, Gonzalo Montiel
+Cuti Romero, Nico Gonzalez
+Di Maria, Gonzalo Montiel, Nico Gonzalez
+Cuti Romero, Mac Allister, Nico Gonzalez
+Dibu, Licha Martinez
+Dibu, Paredes
+Dibu, Molina
+De Paul, Dibu
+Dibu, Otamendi, Pezzella
+Di Maria, Exequiel Palacios, Guido Rodriguez
+Cuti Romero, Dybala
+Mac Allister, Molina
+Dybala, Enzo Fernandez
+Mac Allister, Nico Gonzalez
+Guido Rodriguez, Molina
+Dibu, Mac Allister
+Dybala, Enzo Fernandez
+Cuti Romero, Dybala, Nico Gonzalez
+Lautaro, Licha Martinez
+Cuti Romero, Enzo Fernandez, Gonzalo Montiel
+De Paul, Guido Rodriguez, Molina
+De Paul, Guido Rodriguez, Mac Allister
+De Paul, Lautaro
+De Paul, Molina
+Paredes, Pezzella, Tagliafico
+Dibu, Lautaro, Pezzella
+Alvarez, Paredes
+Paredes, Pezzella
+Enzo Fernandez, Messi
+Dibu, Exequiel Palacios, Molina
+De Paul, Dybala, Otamendi
+De Paul, Mac Allister, Tagliafico
+Di Maria, Mac Allister
+Di Maria, Enzo Fernandez, Mac Allister
+Gonzalo Montiel, Paredes
+Cuti Romero, Dybala, Lautaro
+Dybala, Mac Allister, Messi
+Cuti Romero, Guido Rodriguez
+Alvarez, Exequiel Palacios, Licha Martinez
+Nico Gonzalez, Tagliafico
+Dybala, Tagliafico
+Gonzalo Montiel, Messi
+Gonzalo Montiel, Mac Allister, Pezzella
